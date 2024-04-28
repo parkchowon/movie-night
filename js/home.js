@@ -35,6 +35,7 @@ let cardDiv = document.getElementById("cardsDiv");
 //전체보기 클릭 시
 const allMovieListBtn = document.getElementById("showAllMoive");
 allMovieListBtn.addEventListener("click", () => {
+  moveDiv();
   div.replaceChildren();
   cardDiv.replaceChildren();
   showCategory();
@@ -46,23 +47,61 @@ allMovieListBtn.addEventListener("click", () => {
   console.log("클릭", cardList);
 });
 
+//평점, 이름 순서대로 보이게
+let voteOrder = document.getElementById("voteOrder");
+let nameOrder = document.getElementById("nameOrder");
+let movieNameSort = document.getElementsByClassName("card-title");
+let movieVoteSort = document.getElementsByClassName("card-vote");
+
+//평점순
+voteOrder.addEventListener("click", () => {
+  let obj = {};
+  //key value로 key:제목 value:평점인 obj만들기
+  for (let i = 0; i < movieVoteSort.length; i++) {
+    obj[movieNameSort[i].innerText] = movieVoteSort[i].innerText;
+  }
+  //value값으로 오름차순
+  let sorted = Object.entries(obj).sort((a, b) => b[1] - a[1]);
+  cardDiv.replaceChildren();
+  sorted.forEach((i) => {
+    cardDiv.appendChild(movieMap.get(i[0]));
+  });
+});
+//이름순
+nameOrder.addEventListener("click", () => {
+  let arr = [];
+  for (let i = 0; i < movieNameSort.length; i++) {
+    arr.push(movieNameSort[i].innerText);
+    arr.sort();
+  }
+  cardDiv.replaceChildren();
+  arr.forEach((i) => {
+    cardDiv.appendChild(movieMap.get(i));
+  });
+});
+
 const movieCard = (item) => {
   //item에 들어있는 영화 정보
   let movieTitle = item.name;
   let movieContent = item.overview;
   let movieVote = item.vote_average;
   let moviePoster = item.poster_path;
+  let movieId = item.id;
 
   let movieCard = document.createElement("div");
   movieCard.classList.add("movie-card");
 
   //movie card
   movieCard.innerHTML = `
-      <img class="card-img" src ="http://image.tmdb.org/t/p/w300/${moviePoster}" />
+      <img class="card-img" src ="http://image.tmdb.org/t/p/w200/${moviePoster}" />
       <p class="card-title">${movieTitle}</p>
-      <p class="card-overview">${movieContent}</p>
       <p class="card-vote">${movieVote}</p>
+      <p class="card-overview">${movieContent}</p>
   `;
+
+  movieCard.addEventListener("click", () => {
+    alert(`Movie Id : ${movieId}`);
+  });
 
   //만들어진 카드 Map에 저장
   movieMap.set(movieTitle, movieCard);
@@ -77,12 +116,23 @@ const showCategory = () => {
 };
 
 //이벤트 시 로고 움직이는 함수
-const moveHeader = () => {
-  let hearder = document.getElementById("header");
+const moveDiv = () => {
+  let header = document.getElementById("header");
   let logo = document.getElementById("logo");
   let showAll = document.getElementById("showAllMoive");
   let searchBox = document.getElementById("searchDiv");
-  let input = document.getElementById("searchInput");
+  let main = document.getElementById("main");
+
+  header.style.width = `600px`;
+  header.style.top = `45px`;
+  header.style.left = 0;
+  logo.style.fontSize = `40px`;
+  searchBox.style.top = 0;
+  searchBox.style.left = `500px`;
+  searchBox.style.justifyContent = "normal";
+  searchBox.style.margin = "50px 0";
+  searchBox.style.padding = "0";
+  main.style.height = "150px";
 };
 
 //엔터 누를 시
@@ -91,6 +141,8 @@ const pressEnter = (e) => {
   if (e.keyCode == 13) {
     div.replaceChildren();
     if (inputText !== "") {
+      moveDiv();
+      showCategory();
       showMoiveCard();
       if (cardDiv.children.length == 0) {
         showCategory();
@@ -109,6 +161,23 @@ const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 const boxDiv = document.getElementById("similarTitle");
 let similarTitle = [];
+
+//서치 버튼을 누를 시
+searchBtn.addEventListener("click", () => {
+  let inputText = document.getElementById("searchInput").value;
+  div.replaceChildren();
+  if (inputText !== "") {
+    moveDiv();
+    showCategory();
+    showMoiveCard();
+    if (cardDiv.children.length == 0) {
+      showCategory();
+      notFound();
+    }
+  } else {
+    alert("Enter the text");
+  }
+});
 
 //연관 검색 찾아주는 함수
 const search = () => {
@@ -161,3 +230,5 @@ const showMoiveCard = () => {
     }
   });
 };
+
+searchInput.focus();

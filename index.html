@@ -15,7 +15,7 @@
   <body>
     <div class="wrapper">
       <!-- 헤더 -->
-      <div class="main">
+      <div id="main" class="main">
         <header id="header" class="header">
           <p id="logo" class="header-title-text">Movie Night</p>
           <button id="showAllMoive" class="header-all-movie-list-btn">
@@ -38,12 +38,11 @@
           <button id="searchBtn" class="search-box-btn">SEARCH</button>
         </div>
       </div>
-
       <!-- 영화 리스트 -->
       <div id="cardDiv" class="movie-container">
         <div id="category" class="movie-category">
-          <button class="cate-btn">평점순</button>
-          <button class="cate-btn">이름순</button>
+          <button id="voteOrder" class="cate-btn">평점순</button>
+          <button id="nameOrder" class="cate-btn">이름순</button>
         </div>
         <div id="cardsDiv" class="movie-cards-div"></div>
       </div>
