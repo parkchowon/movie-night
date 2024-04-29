@@ -150,9 +150,6 @@ body {
   cursor: pointer;
 }
 
-.movie-container {
-}
-
 .movie-category {
   display: none;
   width: 100%;
@@ -227,6 +224,11 @@ body {
   margin-right: auto;
   color: white;
   margin-bottom: 10px;
+}
+.vote-div {
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .notfound-div {

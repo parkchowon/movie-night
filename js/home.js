@@ -102,7 +102,10 @@ const movieCard = (item) => {
   movieCard.innerHTML = `
       <img class="card-img" src ="http://image.tmdb.org/t/p/w200/${moviePoster}" />
       <p class="card-title">${movieTitle}</p>
+      <div class="vote-div">
+      <p>⭐</p>
       <p class="card-vote">${movieVote}</p>
+      </div>
       <p class="card-overview">${movieContent}</p>
   `;
 
