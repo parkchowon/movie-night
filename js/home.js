@@ -8,24 +8,30 @@ const options = {
   },
 };
 
+let movieArr = [];
+let movieItem = [];
 let movieInfo;
 let movieMap = new Map();
 
 //영화 정보 불러오기
-fetch(
-  "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
-  options
-)
-  .then((response) => response.json())
-  .then((data) => {
-    //movie 정보 넣기
-    movieInfo = data["results"];
-    movieInfo.forEach((e) => {
-      movieCard(e);
-    });
-    cardDiv.replaceChildren();
-  })
-  .catch((err) => console.error(err));
+for (let i = 1; i < 10; i++) {
+  let url =
+    "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=" + i;
+  fetch(url, options)
+    .then((response) => response.json())
+    .then((data) => {
+      //movie 정보 넣기
+
+      data["results"].forEach((e) => {
+        movieArr.push(e);
+      });
+      movieArr.forEach((e) => {
+        movieCard(e);
+      });
+      cardDiv.replaceChildren();
+    })
+    .catch((err) => console.error(err));
+}
 
 //card들을 넣을 div
 let cardDiv = document.getElementById("cardsDiv");
@@ -39,8 +45,7 @@ allMovieListBtn.addEventListener("click", () => {
   div.replaceChildren();
   cardDiv.replaceChildren();
   showCategory();
-  let cardList = movieInfo;
-  cardList.forEach((e) => {
+  movieArr.forEach((e) => {
     movieCard(e);
   });
 
@@ -80,8 +85,10 @@ nameOrder.addEventListener("click", () => {
   });
 });
 
+//카드를 만드는 함수
 const movieCard = (item) => {
   //item에 들어있는 영화 정보
+
   let movieTitle = item.name;
   let movieContent = item.overview;
   let movieVote = item.vote_average;
@@ -99,12 +106,13 @@ const movieCard = (item) => {
       <p class="card-overview">${movieContent}</p>
   `;
 
+  //만들어진 카드 Map에 저장
+  movieMap.set(movieTitle, movieCard);
+
   movieCard.addEventListener("click", () => {
     alert(`Movie Id : ${movieId}`);
   });
 
-  //만들어진 카드 Map에 저장
-  movieMap.set(movieTitle, movieCard);
   //Div안에 카드 넣기
   cardDiv.appendChild(movieCard);
 };
@@ -183,7 +191,7 @@ searchBtn.addEventListener("click", () => {
 const search = () => {
   boxDiv.replaceChildren();
   let inputText = searchInput.value.toLowerCase();
-  movieInfo.forEach((item) => {
+  movieArr.forEach((item) => {
     let movieTitle = item["name"];
     if (inputText.length > 2) {
       if (movieTitle.toLowerCase().includes(inputText)) {
@@ -194,10 +202,14 @@ const search = () => {
       similarTitle = [];
     }
   });
-  //연관검색된 title 배열들을 div에 넣기
-  similarTitle.forEach((i) => {
-    similar(i);
-  });
+  //연관검색어 5개까지
+  if (similarTitle.length > 5) {
+    for (i = 0; i < 5; i++) {
+      similar(similarTitle[i]);
+    }
+  } else {
+    similarTitle.forEach((i) => similar(i));
+  }
   similarTitle = [];
 };
 
@@ -223,7 +235,7 @@ const showMoiveCard = () => {
   cardDiv.replaceChildren();
   let text = searchInput.value.toLowerCase();
   console.log("text input:", text);
-  movieInfo.forEach((item) => {
+  movieArr.forEach((item) => {
     let movieTitle = item["name"];
     if (movieTitle.toLowerCase().includes(text)) {
       cardDiv.appendChild(movieMap.get(movieTitle));
@@ -231,4 +243,17 @@ const showMoiveCard = () => {
   });
 };
 
+//랜딩되면 input 포커스
 searchInput.focus();
+
+//검색창 포커스 아웃되면 연관검색어 사라지게
+searchInput.addEventListener("blur", () => {
+  similarTitle = [];
+  boxDiv.replaceChildren();
+});
+
+//로고 클릭 시 랜딩화면
+const logo = document.getElementById("logo");
+logo.addEventListener("click", () => {
+  window.location.reload();
+});
