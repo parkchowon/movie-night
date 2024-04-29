@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Night</title>
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- 헤더 -->
+      <div id="main" class="main">
+        <header id="header" class="header">
+          <p id="logo" class="header-title-text">Movie Night</p>
+          <button id="showAllMoive" class="header-all-movie-list-btn">
+            See All
+          </button>
+        </header>
+        <!-- 영화 검색 창 -->
+        <div id="searchDiv" class="search-box-container">
+          <div class="search-extend">
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search for a movie"
+              class="search-box-input"
+              oninput="search()"
+              onkeypress="pressEnter(event)"
+              autocomplete="off"
+            />
+            <div id="similarTitle"></div>
+          </div>
+          <button id="searchBtn" class="search-box-btn">SEARCH</button>
+        </div>
+      </div>
+      <!-- 영화 리스트 -->
+      <div id="cardDiv" class="movie-container">
+        <div id="category" class="movie-category">
+          <button id="voteOrder" class="cate-btn">rating</button>
+          <button id="nameOrder" class="cate-btn">name</button>
+        </div>
+        <div id="cardsDiv" class="movie-cards-div"></div>
+      </div>
+    </div>
+    <script src="./js/home.js"></script>
+  </body>
+</html>

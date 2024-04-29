@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+}
+
+.header {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  top: 26%;
+  padding: 0 5% 0 5%;
+  position: absolute;
+}
+
+.header-title-text {
+  font-family: "Oswald", sans-serif;
+  font-weight: 600;
+  font-size: 79px;
+  color: white;
+  overflow: hidden;
+}
+
+.header-title-text:hover {
+  cursor: pointer;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.header-all-movie-list-btn {
+  background-color: transparent;
+  border: transparent;
+  font-size: 17px;
+  margin-left: 3%;
+  color: rgb(255, 255, 255);
+}
+
+.header-all-movie-list-btn:hover {
+  color: rgb(202, 202, 202);
+  cursor: pointer;
+}
+
+.search-box-container {
+  width: 100%;
+  margin: 2% 0 5% 0;
+  padding: 0 16% 4% 16%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 39%;
+  position: absolute;
+}
+
+.search-extend {
+  width: 100%;
+  height: fit-content;
+  margin: 0 1%;
+  border-radius: 25px;
+  max-width: 610px;
+  border: 2px solid white;
+  background-color: transparent;
+}
+
+.search-extend:focus-within {
+  border-radius: 25px;
+  border: 2px solid rgb(145, 145, 145);
+  background-color: rgb(145, 145, 145);
+}
+
+.search-extend:hover {
+  border: 2px solid rgb(145, 145, 145);
+  background-color: rgb(145, 145, 145);
+}
+
+.search-extend:focus {
+  border: 2px solid rgb(145, 145, 145);
+  background-color: rgb(145, 145, 145);
+}
+
+.search-box-input {
+  color: white;
+  border: transparent;
+  font-family: "Poppins", sans-serif;
+  height: 48px;
+  width: 100%;
+  padding: 0 6%;
+  margin: 0;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+.search-box-input:focus {
+  outline: none;
+}
+
+#similarTitle {
+  padding: 0 6%;
+  background-color: transparent;
+}
+.similar-title {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.similar-title > p {
+  background-color: transparent;
+  color: white;
+}
+
+.search-box-btn {
+  font-family: "Poppins", sans-serif;
+  height: 48px;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 0 3%;
+  background-color: rgb(226, 226, 226);
+  border-radius: 25px;
+  color: black;
+  border: 2px solid rgb(226, 226, 226);
+}
+
+.search-box-btn:hover {
+  border: 2px solid rgb(170, 170, 170);
+  background-color: rgb(170, 170, 170);
+  cursor: pointer;
+}
+
+.movie-category {
+  display: none;
+  width: 100%;
+  margin: 10px 0 100px 0;
+  border-bottom: 1px solid white;
+  padding: 20px 250px;
+}
+
+.cate-btn {
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  padding: 3px;
+  font-size: 18px;
+  margin-right: 2%;
+  border: 3px solid transparent;
+}
+
+.cate-btn:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
+}
+
+.cate-btn:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.movie-cards-div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 300px);
+  row-gap: 35px;
+  column-gap: 10px;
+  place-content: center;
+}
+
+.movie-card {
+  padding: 0 50px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.movie-card:hover {
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.3s;
+}
+
+.card-title {
+  font-size: 30px;
+  color: white;
+  align-items: start;
+  margin-right: auto;
+}
+
+.card-overview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  color: white;
+  text-align: left;
+  line-height: 22px;
+}
+
+.card-vote {
+  margin-right: auto;
+  color: white;
+  margin-bottom: 10px;
+}
+.vote-div {
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.notfound-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notfound-div > p {
+  font-size: 40px;
+  color: white;
+  font-family: "Roboto Slab", serif;
+}
