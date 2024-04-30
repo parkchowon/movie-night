@@ -26,7 +26,7 @@ body {
 
 .header {
   width: 100%;
-  height: max-content;
+
   display: flex;
   justify-content: center;
   top: 26%;
@@ -39,6 +39,8 @@ body {
   font-weight: 600;
   font-size: 79px;
   color: white;
+  line-height: 105px;
+  height: fit-content;
   overflow: hidden;
 }
 
@@ -207,6 +209,8 @@ body {
   color: white;
   align-items: start;
   margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .card-overview {

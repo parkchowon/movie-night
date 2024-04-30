@@ -13,7 +13,7 @@ let movieItem = [];
 let movieInfo;
 let movieMap = new Map();
 
-//영화 정보 불러오기
+/** 영화 API 불러오기 */
 for (let i = 1; i < 10; i++) {
   let url =
     "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=" + i;
@@ -48,11 +48,9 @@ allMovieListBtn.addEventListener("click", () => {
   movieArr.forEach((e) => {
     movieCard(e);
   });
-
-  console.log("클릭", cardList);
 });
 
-//평점, 이름 순서대로 보이게
+/** 카테고리 기능 */
 let voteOrder = document.getElementById("voteOrder");
 let nameOrder = document.getElementById("nameOrder");
 let movieNameSort = document.getElementsByClassName("card-title");
@@ -72,6 +70,7 @@ voteOrder.addEventListener("click", () => {
     cardDiv.appendChild(movieMap.get(i[0]));
   });
 });
+
 //이름순
 nameOrder.addEventListener("click", () => {
   let arr = [];
@@ -85,7 +84,7 @@ nameOrder.addEventListener("click", () => {
   });
 });
 
-//카드를 만드는 함수
+/** 카드를 만드는 함수 */
 const movieCard = (item) => {
   //item에 들어있는 영화 정보
 
@@ -135,7 +134,7 @@ const moveDiv = () => {
   let main = document.getElementById("main");
 
   header.style.width = `600px`;
-  header.style.top = `45px`;
+  header.style.top = `20px`;
   header.style.left = 0;
   logo.style.fontSize = `40px`;
   searchBox.style.top = 0;
@@ -150,6 +149,7 @@ const moveDiv = () => {
 const pressEnter = (e) => {
   let inputText = document.getElementById("searchInput").value;
   if (e.keyCode == 13) {
+    e.preventDefault();
     div.replaceChildren();
     if (inputText !== "") {
       moveDiv();
@@ -174,7 +174,8 @@ const boxDiv = document.getElementById("similarTitle");
 let similarTitle = [];
 
 //서치 버튼을 누를 시
-searchBtn.addEventListener("click", () => {
+searchBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   let inputText = document.getElementById("searchInput").value;
   div.replaceChildren();
   if (inputText !== "") {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Night</title>
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +24,7 @@
           </button>
         </header>
         <!-- 영화 검색 창 -->
-        <div id="searchDiv" class="search-box-container">
+        <form id="searchDiv" class="search-box-container">
           <div class="search-extend">
             <input
               id="searchInput"
@@ -37,7 +38,7 @@
             <div id="similarTitle"></div>
           </div>
           <button id="searchBtn" class="search-box-btn">SEARCH</button>
-        </div>
+        </form>
       </div>
       <!-- 영화 리스트 -->
       <div id="cardDiv" class="movie-container">
