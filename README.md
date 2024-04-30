@@ -4,15 +4,16 @@
 
 
 ## 🗓️ 프로젝트 소개
-***
+
 <ol>
+  <li>사이트 : https://parkchowon.github.io/MovieSearch/</li>
   <li>제작 기간 : 2024.04.23~2024.04.29</li>
   <li>개발 언어 : HTML, JavaScript, CSS</li>
   <li>소개 : 영화 API를 이용하여 영화를 검색할 수 있는 사이트</li>
 </ol>
+***
 
 ## ❗프로젝트 필수 요구 사항
-***
 
 <ol>
   <li>jQuery 라이브러리 사용없이 순수 바닐라 자바스크립트 사용하기</li>
@@ -27,9 +28,10 @@
     <li>DOM 제어하기 : 아래 api 목록 중 2개 이상 사용하기</li>
   </ol>
 </ol>
+***
 
 ## 💻구현 화면
-***
+
 
 ### ✅ [랜딩 화면]
 ![](https://velog.velcdn.com/images/candlecircle/post/b27bf44f-3386-41f3-a5c4-dcc7c4067308/image.png)
@@ -39,13 +41,9 @@
 
 ▶️ 클릭 이벤트가 들어가는 요소들에 hover를 넣어줬다.
 
-
 ####  [ 연관 검색어 기능 ]
 <img src="https://velog.velcdn.com/images/candlecircle/post/99529e38-693c-4419-bb29-36cd9ffa018c/image.gif" />
 ▶️ input 창에 3글자 이상 작성하면 작성한 단어가 들어가 있는 영화 제목을 최대 5개 보여준다.
-
-
-***
 
 ### ✅ [검색 화면]
 
