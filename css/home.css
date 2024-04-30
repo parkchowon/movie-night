@@ -60,7 +60,7 @@ body {
 }
 
 .header-all-movie-list-btn:hover {
-  color: rgb(202, 202, 202);
+  color: red;
   cursor: pointer;
 }
 
@@ -147,8 +147,8 @@ body {
 }
 
 .search-box-btn:hover {
-  border: 2px solid rgb(170, 170, 170);
-  background-color: rgb(170, 170, 170);
+  border: 2px solid rgb(177, 177, 177);
+  background-color: rgb(177, 177, 177);
   cursor: pointer;
 }
 
@@ -167,6 +167,7 @@ body {
   font-size: 18px;
   margin-right: 2%;
   border: 3px solid transparent;
+  cursor: pointer;
 }
 
 .cate-btn:hover {
