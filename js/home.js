@@ -14,24 +14,28 @@ let movieInfo;
 let movieMap = new Map();
 
 /** 영화 API 불러오기 */
-for (let i = 1; i < 10; i++) {
-  let url =
-    "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=" + i;
-  fetch(url, options)
-    .then((response) => response.json())
-    .then((data) => {
-      //movie 정보 넣기
+const callApi = async () => {
+  for (let i = 1; i < 10; i++) {
+    let url =
+      "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=" + i;
+    await fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        //movie 정보 넣기
 
-      data["results"].forEach((e) => {
-        movieArr.push(e);
-      });
-      movieArr.forEach((e) => {
-        movieCard(e);
-      });
-      cardDiv.replaceChildren();
-    })
-    .catch((err) => console.error(err));
-}
+        data["results"].forEach((e) => {
+          movieArr.push(e);
+        });
+        movieArr.forEach((e) => {
+          movieCard(e);
+        });
+        cardDiv.replaceChildren();
+      })
+      .catch((err) => console.error(err));
+  }
+};
+
+callApi();
 
 //card들을 넣을 div
 let cardDiv = document.getElementById("cardsDiv");
