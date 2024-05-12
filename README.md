@@ -5,7 +5,7 @@
 ## 🗓️ 프로젝트 소개
 
 <ol>
-  <li>사이트 : https://parkchowon.github.io/MovieSearch/</li>
+  <li>사이트 : https://parkchowon.github.io/movie-night/</li>
   <li>제작 기간 : 2024.04.23~2024.04.29</li>
   <li>개발 언어 : HTML, JavaScript, CSS</li>
   <li>소개 : 영화 API를 이용하여 영화를 검색할 수 있는 사이트</li>
